@@ -45,7 +45,7 @@ public class ProductDataService : IProductDataService
   public async Task UpdateAsync(DataProduct product)
   {
     var query = "UPDATE Product SET Name=@Name, Description=@Description, " +
-      "Price=@Price WHERE Id=@id";
+      "Price=@Price WHERE Id=@Id";
     using var connection = new SqliteConnection(_connectionString);
     await connection.ExecuteAsync(query, product);
   }

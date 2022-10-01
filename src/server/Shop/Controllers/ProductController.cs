@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Exceptions;
 using Shop.Models;
 using Shop.Services;
@@ -23,7 +24,7 @@ public class ProductController : ControllerBase
     {
       var created = await _productService.CreateAsync(product);
 
-      return CreatedAtAction(nameof(GetById), created.Id, created);
+      return Created(HttpContext.Request.GetDisplayUrl(), created);
     }
     catch (Exception e)
     {
